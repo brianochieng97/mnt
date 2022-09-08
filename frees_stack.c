@@ -8,7 +8,6 @@
 void frees_stack(void)
 {
 	stack_t *temp = NULL;
-	stack_t *head = NULL;
 
 	if (head)
 	{

@@ -1,5 +1,7 @@
 #include "monty.h"
 
+stack_t *head = NULL;
+
 /**
   * main - The Monty Interpreter entry point
   * @argn: The args number
@@ -9,7 +11,6 @@
   */
 int main(int argn, char *args[])
 {
-	stack_t *head = NULL;
 	FILE *fd = NULL;
 	size_t line_len = 0;
 	unsigned int line_num = 1;
@@ -19,7 +20,6 @@ int main(int argn, char *args[])
 	filename = args[1];
 	check_args_num(argn);
 	fd = open_file(filename);
-	(void)head;
 
 	while ((readed = getline(&buff, &line_len, fd)) != -1)
 	{
