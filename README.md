@@ -121,5 +121,6 @@ All programs and functions were compiled with `gcc 4.8.4` using flags `-Wall -We
 ## Styling
 All files have been written in the Betty Style.
 
-## Author
-**Tarikwa Tesfa** - [Github](https://github.com/tariktesfa)
+## Authors
+**Ehoneah Obed** - [Github](https://github.com/ehoneahobed)
+**Topman Paul-Dike** - [Github](https://github.com/tpauldike)
