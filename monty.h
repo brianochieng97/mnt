@@ -68,7 +68,6 @@ typedef struct instruction_s
 } instruction_t;
 
 extern stack_t *head;
-stack_t *head = NULL;
 
 void check_args_num(int argn);
 FILE *open_file(char *filename);
