@@ -1,49 +1,61 @@
-#ifndef _MONTY_
-#define _MONTY_
+<<<<<<< HEAD
+<<<<<<< HEAD
+#ifndef TADEM_H
+#define TADEM_H
 
-/* Constants */
-#define SUCSS_OP		0
-#define VALID_PARM		0
-#define MIN_ARGS		2
-#define METH_STACK		300
-#define METH_QUEUE		301
-
-/* Common Errors */
-#define ERR_BAD_INST	100
-#define ERR_BAD_MALL	101
-#define ERR_INVLD_PARM	102
-
-/* Usage Errors */
-#define ERR_ARG_USG		200
-#define ERR_PUSH_USG	201
-#define ERR_PINT_USG	202
-#define ERR_POP_USG		203
-#define ERR_SWAP_USG	204
-#define ERR_ADD_USG		205
-#define ERR_SUB_USG		206
-#define ERR_DIV_USG		207
-#define ERR_DIV_ZRO		208
-#define ERR_MUL_USG		209
-#define ERR_MOD_USG		210
-#define ERR_PCH_USG		211
-#define ERR_PCH_EMP		212
-
-#include <ctype.h>
-#include <fcntl.h>
-#include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
+#include <sys/types.h>
 #include <unistd.h>
+#include <fcntl.h>
+#include <string.h>
+#include <ctype.h>
 
 /**
+* struct stack_s - doubly linked list representation of a stack (or queue)
+* @n: integer
+* @prev: points to the previous element of the stack (or queue)
+* @next: points to the next element of the stack (or queue)
+*
+* Description: doubly linked list node structure
+* for stack, queues, LIFO, FIFO
+*/
+=======
+#ifndef MONTY_H
+#define MONTY_H
+=======
+#ifndef TADEM_H
+#define TADEM_H
+>>>>>>> d0aa113... Update solution to tasks
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <string.h>
+#include <ctype.h>
+
+/**
+<<<<<<< HEAD
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
  * @prev: points to the previous element of the stack (or queue)
  * @next: points to the next element of the stack (or queue)
- *
  * Description: doubly linked list node structure
  * for stack, queues, LIFO, FIFO Holberton project
  */
+>>>>>>> 6af6695... Update solutions to tasks
+=======
+* struct stack_s - doubly linked list representation of a stack (or queue)
+* @n: integer
+* @prev: points to the previous element of the stack (or queue)
+* @next: points to the next element of the stack (or queue)
+*
+* Description: doubly linked list node structure
+* for stack, queues, LIFO, FIFO
+*/
+>>>>>>> d0aa113... Update solution to tasks
 typedef struct stack_s
 {
 	int n;
@@ -51,50 +63,138 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
+
 /**
- * struct instruction_s - opcode and its function
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d0aa113... Update solution to tasks
+* struct instruction_s - opcode and its function
+* @opcode: the opcode
+* @f: function to handle the opcode
+*
+* Description: opcode and its function
+* for stack, queues, LIFO, FIFO
+*/
+<<<<<<< HEAD
+=======
+ * struct instruction_s - opcoode and its function
  * @opcode: the opcode
  * @f: function to handle the opcode
- *
  * Description: opcode and its function
  * for stack, queues, LIFO, FIFO Holberton project
  */
+>>>>>>> 6af6695... Update solutions to tasks
+=======
+>>>>>>> d0aa113... Update solution to tasks
 typedef struct instruction_s
 {
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern stack_t *head;
+<<<<<<< HEAD
+<<<<<<< HEAD
 
-void check_args_num(int argn);
-FILE *open_file(char *filename);
-void check_access_rights(char *filename);
-int check_push_param(char *param);
-int check_digits(char *s);
-void frees_stack(void);
-int handle_execution(char *op_code, char *op_param, unsigned int line, int m);
-void handle_error(int errno, char *opcode, unsigned int line, char *buff);
-void handle_cerror(int errno, char *opcode, unsigned int line);
-void handle_uerror(int errno, unsigned int line);
-void handle_more_uerror(int errno, unsigned int line);
-void (*pick_func(char *s))(stack_t **, unsigned int);
-unsigned int count_stack(stack_t *stack);
-void push(stack_t **stack, unsigned int param);
-void push_queue(stack_t **stack, unsigned int param);
-void pall(stack_t **stack, unsigned int line_number);
-void pint(stack_t **stack, unsigned int line_number);
-void pop(stack_t **stack, unsigned int line_number);
-void swap(stack_t **stack, unsigned int line_number);
-void add(stack_t **stack, unsigned int line_number);
-void nop(stack_t **stack, unsigned int line_number);
-void sub(stack_t **stack, unsigned int line_number);
-void divide(stack_t **stack, unsigned int line_number);
-void mul(stack_t **stack, unsigned int line_number);
-void mod(stack_t **stack, unsigned int line_number);
-void pchar(stack_t **stack, unsigned int line_number);
-void pstr(stack_t **stack, unsigned int line_number);
-void rotl(stack_t **stack, unsigned int line_number);
-void rotr(stack_t **stack, unsigned int line_number);
+/**
+* struct bus_s - variables -args, file, line content
+* @arg: value
+* @file: pointer to monty file
+* @content: line content
+* @lifi: flag change stack <-> queue
+*
+* Description: carries values through the program
+*/
+typedef struct bus_s
+{
+	char *arg;
+	FILE *file;
+	char *content;
+	int lifi;
+}  bus_t;
+extern bus_t bus;
+
+char *_realloc(char *ptr, unsigned int old_size, unsigned int new_size);
+ssize_t getstdin(char **lineptr, int file);
+char  *clean_line(char *content);
+void f_push(stack_t **head, unsigned int number);
+void f_pall(stack_t **head, unsigned int number);
+void f_pint(stack_t **head, unsigned int number);
+int execute(char *content, stack_t **head, unsigned int counter, FILE *file);
+void free_stack(stack_t *head);
+void f_pop(stack_t **head, unsigned int counter);
+void f_swap(stack_t **head, unsigned int counter);
+void f_add(stack_t **head, unsigned int counter);
+void f_nop(stack_t **head, unsigned int counter);
+void f_sub(stack_t **head, unsigned int counter);
+void f_div(stack_t **head, unsigned int counter);
+void f_mul(stack_t **head, unsigned int counter);
+void f_mod(stack_t **head, unsigned int counter);
+void f_pchar(stack_t **head, unsigned int counter);
+void f_pstr(stack_t **head, unsigned int counter);
+void f_rotl(stack_t **head, unsigned int counter);
+void f_rotr(stack_t **head, __attribute__((unused)) unsigned int counter);
+void addnode(stack_t **head, int n);
+void addqueue(stack_t **head, int n);
+void f_queue(stack_t **head, unsigned int counter);
+void f_stack(stack_t **head, unsigned int counter);
+
+=======
+=======
+
+>>>>>>> d0aa113... Update solution to tasks
+/**
+* struct bus_s - variables -args, file, line content
+* @arg: value
+* @file: pointer to monty file
+* @content: line content
+* @lifi: flag change stack <-> queue
+*
+* Description: carries values through the program
+*/
+typedef struct bus_s
+{
+	char *arg;
+	FILE *file;
+	char *content;
+	int lifi;
+}  bus_t;
+extern bus_t bus;
+
+char *_realloc(char *ptr, unsigned int old_size, unsigned int new_size);
+ssize_t getstdin(char **lineptr, int file);
+char  *clean_line(char *content);
+void f_push(stack_t **head, unsigned int number);
+void f_pall(stack_t **head, unsigned int number);
+void f_pint(stack_t **head, unsigned int number);
+int execute(char *content, stack_t **head, unsigned int counter, FILE *file);
+void free_stack(stack_t *head);
+void f_pop(stack_t **head, unsigned int counter);
+void f_swap(stack_t **head, unsigned int counter);
+void f_add(stack_t **head, unsigned int counter);
+void f_nop(stack_t **head, unsigned int counter);
+void f_sub(stack_t **head, unsigned int counter);
+void f_div(stack_t **head, unsigned int counter);
+void f_mul(stack_t **head, unsigned int counter);
+void f_mod(stack_t **head, unsigned int counter);
+void f_pchar(stack_t **head, unsigned int counter);
+void f_pstr(stack_t **head, unsigned int counter);
+void f_rotl(stack_t **head, unsigned int counter);
+void f_rotr(stack_t **head, __attribute__((unused)) unsigned int counter);
+void addnode(stack_t **head, int n);
+void addqueue(stack_t **head, int n);
+void f_queue(stack_t **head, unsigned int counter);
+void f_stack(stack_t **head, unsigned int counter);
+
+<<<<<<< HEAD
+/*Functions math*/
+void _sub(stack_t **stack, unsigned int line_number);
+void _add(stack_t **stack, unsigned int line_number);
+void _mul(stack_t **stack, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
+void _mod(stack_t **stack, unsigned int line_number);
+>>>>>>> 6af6695... Update solutions to tasks
+=======
+>>>>>>> d0aa113... Update solution to tasks
 
 #endif
